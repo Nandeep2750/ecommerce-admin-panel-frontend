@@ -1,0 +1,1 @@
+export {default as FourZeroFourLogo} from '../../assets/svg/404.svg';

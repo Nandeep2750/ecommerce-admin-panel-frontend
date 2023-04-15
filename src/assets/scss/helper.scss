@@ -1,0 +1,1545 @@
+/* Custom style helper file */
+
+$breakpoints: (
+"all": null,
+"sm": 576px,
+"md": 768px,
+"lg": 992px,
+"xl": 1200px,
+);
+
+@mixin ele-font($name) {
+    font-family: $name !important;
+}
+
+/* --------- font-family --------- */
+
+.light-text {
+    @include ele-font("font-light");
+}
+.regular-text {
+    @include ele-font("font-regular");
+}
+.medium-text {
+    @include ele-font("font-medium");
+}
+.semi-bold-text {
+    @include ele-font("font-semi-bold");
+}
+.bold-text {
+    @include ele-font("font-bold");
+}
+
+
+/* --------- manage auto margin --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+        
+        .m-auto {
+            margin: auto !important;
+        }
+        
+        .mt-auto,
+        .my-auto {
+            margin-top: auto !important;
+        }
+        
+        .mr-auto,
+        .mx-auto {
+            margin-right: auto !important;
+        }
+        
+        .mb-auto,
+        .my-auto {
+            margin-bottom: auto !important;
+        }
+        
+        .ml-auto,
+        .mx-auto {
+            margin-left: auto !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .m-#{$breakpoint}-auto {
+                margin: auto !important;
+            }
+            
+            .mt-#{$breakpoint}-auto,
+            .my-#{$breakpoint}-auto {
+                margin-top: auto !important;
+            }
+            
+            .mr-#{$breakpoint}-auto,
+            .mx-#{$breakpoint}-auto {
+                margin-right: auto !important;
+            }
+            
+            .mb-#{$breakpoint}-auto,
+            .my-#{$breakpoint}-auto {
+                margin-bottom: auto !important;
+            }
+            
+            .ml-#{$breakpoint}-auto,
+            .mx-#{$breakpoint}-auto {
+                margin-left: auto !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage height & height --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+        
+        .w-auto {
+            width: auto !important;
+        }
+        .h-auto {
+            height: auto !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .w-#{$breakpoint}-auto {
+                width: auto !important;
+            }
+            .h-#{$breakpoint}-auto {
+                height: auto !important;
+            }
+            
+        }
+    }
+}
+
+.full-height, 
+.vh-100 {
+    height: 100vh !important;
+}
+
+.full-width, 
+.vw-100 {
+    width: 100vw !important;
+}
+
+.fill-width {
+    width: 100% !important;
+}
+
+.fill-height {
+    height: 100% !important;
+}
+
+.min-vw-100 {
+    min-width: 100vw !important;
+}
+
+.min-vh-100 {
+    min-height: 100vh !important;
+}
+
+/* --------- manage text alignment --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+        
+        .text-left {
+            text-align: left !important;
+        }
+        
+        .text-right {
+            text-align: right !important;
+        }
+        
+        .text-center {
+            text-align: center !important;
+        }
+        
+        .text-justify {
+            text-align: justify !important;
+        }
+        
+        .text-wrap {
+            white-space: normal !important;
+        }
+        
+        .text-nowrap {
+            white-space: nowrap !important;
+        }
+        
+        .text-truncate {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .text-lowercase {
+            text-transform: lowercase !important;
+        }
+        
+        .text-uppercase {
+            text-transform: uppercase !important;
+        }
+        
+        .text-capitalize {
+            text-transform: capitalize !important;
+        }
+        
+        .text-hide {
+            font: 0/0 a;
+            color: transparent;
+            text-shadow: none;
+            background-color: transparent;
+            border: 0;
+        }
+        
+        .text-break {
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+        
+        .text-reset {
+            color: inherit !important;
+        }
+        
+        .text-decoration-none {
+            text-decoration: none !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .text-#{$breakpoint}-left {
+                text-align: left !important;
+            }
+            
+            .text-#{$breakpoint}-right {
+                text-align: right !important;
+            }
+            
+            .text-#{$breakpoint}-center {
+                text-align: center !important;
+            }
+            
+            .text-#{$breakpoint}-justify {
+                text-align: justify !important;
+            }
+            
+            .text-#{$breakpoint}-wrap {
+                white-space: normal !important;
+            }
+            
+            .text-#{$breakpoint}-nowrap {
+                white-space: nowrap !important;
+            }
+            
+            .text-#{$breakpoint}-truncate {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            
+            .text-#{$breakpoint}-lowercase {
+                text-transform: lowercase !important;
+            }
+            
+            .text-#{$breakpoint}-uppercase {
+                text-transform: uppercase !important;
+            }
+            
+            .text-#{$breakpoint}-capitalize {
+                text-transform: capitalize !important;
+            }
+            
+            .text-#{$breakpoint}-hide {
+                font: 0/0 a;
+                color: transparent;
+                text-shadow: none;
+                background-color: transparent;
+                border: 0;
+            }
+            
+            .text-#{$breakpoint}-break {
+                word-break: break-word !important;
+                overflow-wrap: break-word !important;
+            }
+            
+            .text-#{$breakpoint}-reset {
+                color: inherit !important;
+            }
+            
+            .text-decoration-#{$breakpoint}-none {
+                text-decoration: none !important;
+            }
+            
+        }
+    }
+}
+
+
+/* --------- manage text color --------- */
+
+.text-white {
+    color: #ffffff !important;
+}
+
+.text-black {
+    color: #000000 !important;
+}
+
+.text-black-50 {
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* --------- manage font-weight --------- */
+
+.font-weight-light {
+    font-weight: 300 !important;
+}
+
+.font-weight-lighter {
+    font-weight: lighter !important;
+}
+
+.font-weight-normal {
+    font-weight: 400 !important;
+}
+
+.font-weight-bold {
+    font-weight: 700 !important;
+}
+
+.font-weight-bolder {
+    font-weight: bolder !important;
+}
+
+/* --------- manage cursor --------- */
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+/* --------- manage overflow --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+        
+        .overflow-auto {
+            overflow: auto !important;
+        }
+        
+        .overflow-hidden {
+            overflow: hidden !important;
+        }
+        
+        .overflow-scroll {
+            overflow: scroll !important;
+        }
+        
+        .overflow-x-scroll {
+            overflow-x: scroll !important;
+        }
+        
+        .overflow-y-scroll {
+            overflow-y: scroll !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .overflow-#{$breakpoint}-auto {
+                overflow: auto !important;
+            }
+            
+            .overflow-#{$breakpoint}-hidden {
+                overflow: hidden !important;
+            }
+            
+            .overflow-#{$breakpoint}-scroll {
+                overflow: scroll !important;
+            }
+            
+            .overflow-x-#{$breakpoint}-scroll {
+                overflow-x: scroll !important;
+            }
+            
+            .overflow-y-#{$breakpoint}-scroll {
+                overflow-y: scroll !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage display --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+        
+        .d-none {
+            display: none !important;
+        }
+        
+        .d-inline {
+            display: inline !important;
+        }
+        
+        .d-inline-block {
+            display: inline-block !important;
+        }
+        
+        .d-block {
+            display: block !important;
+        }
+        
+        .d-table {
+            display: table !important;
+        }
+        
+        .d-table-row {
+            display: table-row !important;
+        }
+        
+        .d-table-cell {
+            display: table-cell !important;
+        }
+        
+        .d-flex {
+            display: -ms-flexbox !important;
+            display: flex !important;
+        }
+        
+        .d-inline-flex {
+            display: -ms-inline-flexbox !important;
+            display: inline-flex !important;
+        } 
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .d-#{$breakpoint}-none {
+                display: none !important;
+            }
+            
+            .d-#{$breakpoint}-inline {
+                display: inline !important;
+            }
+            
+            .d-#{$breakpoint}-inline-block {
+                display: inline-block !important;
+            }
+            
+            .d-#{$breakpoint}-block {
+                display: block !important;
+            }
+            
+            .d-#{$breakpoint}-table {
+                display: table !important;
+            }
+            
+            .d-#{$breakpoint}-table-row {
+                display: table-row !important;
+            }
+            
+            .d-#{$breakpoint}-table-cell {
+                display: table-cell !important;
+            }
+            
+            .d-#{$breakpoint}-flex {
+                display: -ms-flexbox !important;
+                display: flex !important;
+            }
+            
+            .d-#{$breakpoint}-inline-flex {
+                display: -ms-inline-flexbox !important;
+                display: inline-flex !important;
+            } 
+            
+        }
+    }
+}
+
+/* --------- manage position --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+        
+        .position-static {
+            position: static !important;
+        }
+        
+        .position-relative {
+            position: relative !important;
+        }
+        
+        .position-absolute {
+            position: absolute !important;
+        }
+        
+        .position-fixed {
+            position: fixed !important;
+        }
+        
+        .position-sticky {
+            position: -webkit-sticky !important;
+            position: sticky !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .position-#{$breakpoint}-static {
+                position: static !important;
+            }
+            
+            .position-#{$breakpoint}-relative {
+                position: relative !important;
+            }
+            
+            .position-#{$breakpoint}-absolute {
+                position: absolute !important;
+            }
+            
+            .position-#{$breakpoint}-fixed {
+                position: fixed !important;
+            }
+            
+            .position-#{$breakpoint}-sticky {
+                position: -webkit-sticky !important;
+                position: sticky !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage visibility --------- */
+
+.visible {
+    visibility: visible !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+/* --------- manage opacity --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+        
+        .opacity-0 {
+            opacity: 0 !important;
+        }
+        
+        .opacity-1 {
+            opacity: 1 !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .opacity-#{$breakpoint}-0 {
+                opacity: 0 !important;
+            }
+            
+            .opacity-#{$breakpoint}-1 {
+                opacity: 1 !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage float --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+        
+        .float-right {
+            float: right !important;
+        }
+        
+        .float-left {
+            float: left !important;
+        }
+        
+        .float-none {
+            float: none !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .float-#{$breakpoint}-right {
+                float: right !important;
+            }
+            
+            .float-#{$breakpoint}-left {
+                float: left !important;
+            }
+            
+            .float-#{$breakpoint}-none {
+                float: none !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage border --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+        
+        .border-none, 
+        .border-0 {
+            border: 0 !important;
+        }
+        
+        .border-top-0 {
+            border-top: 0 !important;
+        }
+        
+        .border-right-0 {
+            border-right: 0 !important;
+        }
+        
+        .border-bottom-0 {
+            border-bottom: 0 !important;
+        }
+        
+        .border-left-0 {
+            border-left: 0 !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .border-#{$breakpoint}-none, 
+            .border-#{$breakpoint}-0 {
+                border: 0 !important;
+            }
+            
+            .border-top-#{$breakpoint}-0 {
+                border-top: 0 !important;
+            }
+            
+            .border-right-#{$breakpoint}-0 {
+                border-right: 0 !important;
+            }
+            
+            .border-bottom-#{$breakpoint}-0 {
+                border-bottom: 0 !important;
+            }
+            
+            .border-left-#{$breakpoint}-0 {
+                border-left: 0 !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage border-radius --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+        
+        .rounded-circle {
+            border-radius: 50% !important;
+        }
+        
+        .rounded-pill {
+            border-radius: 50rem !important;
+        }
+        
+        .rounded-0 {
+            border-radius: 0 !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .rounded-#{$breakpoint}-circle {
+                border-radius: 50% !important;
+            }
+            
+            .rounded-#{$breakpoint}-pill {
+                border-radius: 50rem !important;
+            }
+            
+            .rounded-#{$breakpoint}-0 {
+                border-radius: 0 !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage vertical alignment --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+
+        .vertical-align-top {
+            vertical-align: top !important;
+        }
+        
+        .vertical-align-middle {
+            vertical-align: middle !important;
+        }
+        
+        .vertical-align-bottom {
+            vertical-align: bottom !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+
+            .vertical-align-#{$breakpoint}-top {
+                vertical-align: top !important;
+            }
+            
+            .vertical-align-#{$breakpoint}-middle {
+                vertical-align: middle !important;
+            }
+            
+            .vertical-align-#{$breakpoint}-bottom {
+                vertical-align: bottom !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- flex --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+
+        .flex-row {
+            -ms-flex-direction: row !important;
+            flex-direction: row !important;
+        }
+        
+        .flex-column {
+            -ms-flex-direction: column !important;
+            flex-direction: column !important;
+        }
+        
+        .flex-row-reverse {
+            -ms-flex-direction: row-reverse !important;
+            flex-direction: row-reverse !important;
+        }
+        
+        .flex-column-reverse {
+            -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important;
+        }
+        
+        .flex-wrap {
+            -ms-flex-wrap: wrap !important;
+            flex-wrap: wrap !important;
+        }
+        
+        .flex-nowrap {
+            -ms-flex-wrap: nowrap !important;
+            flex-wrap: nowrap !important;
+        }
+        
+        .flex-wrap-reverse {
+            -ms-flex-wrap: wrap-reverse !important;
+            flex-wrap: wrap-reverse !important;
+        }
+        
+        .flex-fill {
+            -ms-flex: 1 1 auto !important;
+            flex: 1 1 auto !important;
+        }
+        
+        .flex-grow-0 {
+            -ms-flex-positive: 0 !important;
+            flex-grow: 0 !important;
+        }
+        
+        .flex-grow-1 {
+            -ms-flex-positive: 1 !important;
+            flex-grow: 1 !important;
+        }
+        
+        .flex-shrink-0 {
+            -ms-flex-negative: 0 !important;
+            flex-shrink: 0 !important;
+        }
+        
+        .flex-shrink-1 {
+            -ms-flex-negative: 1 !important;
+            flex-shrink: 1 !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+
+            .flex-#{$breakpoint}-row {
+                -ms-flex-direction: row !important;
+                flex-direction: row !important;
+            }
+            
+            .flex-#{$breakpoint}-column {
+                -ms-flex-direction: column !important;
+                flex-direction: column !important;
+            }
+            
+            .flex-#{$breakpoint}-row-reverse {
+                -ms-flex-direction: row-reverse !important;
+                flex-direction: row-reverse !important;
+            }
+            
+            .flex-#{$breakpoint}-column-reverse {
+                -ms-flex-direction: column-reverse !important;
+                flex-direction: column-reverse !important;
+            }
+            
+            .flex-#{$breakpoint}-wrap {
+                -ms-flex-wrap: wrap !important;
+                flex-wrap: wrap !important;
+            }
+            
+            .flex-#{$breakpoint}-nowrap {
+                -ms-flex-wrap: nowrap !important;
+                flex-wrap: nowrap !important;
+            }
+            
+            .flex-#{$breakpoint}-wrap-reverse {
+                -ms-flex-wrap: wrap-reverse !important;
+                flex-wrap: wrap-reverse !important;
+            }
+            
+            .flex-#{$breakpoint}-fill {
+                -ms-flex: 1 1 auto !important;
+                flex: 1 1 auto !important;
+            }
+            
+            .flex-#{$breakpoint}-grow-0 {
+                -ms-flex-positive: 0 !important;
+                flex-grow: 0 !important;
+            }
+            
+            .flex-#{$breakpoint}-grow-1 {
+                -ms-flex-positive: 1 !important;
+                flex-grow: 1 !important;
+            }
+            
+            .flex-#{$breakpoint}-shrink-0 {
+                -ms-flex-negative: 0 !important;
+                flex-shrink: 0 !important;
+            }
+            
+            .flex-#{$breakpoint}-shrink-1 {
+                -ms-flex-negative: 1 !important;
+                flex-shrink: 1 !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage justify-content --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+
+        .justify-content-start {
+            -ms-flex-pack: start !important;
+            justify-content: flex-start !important;
+        }
+        
+        .justify-content-end {
+            -ms-flex-pack: end !important;
+            justify-content: flex-end !important;
+        }
+        
+        .justify-content-center {
+            -ms-flex-pack: center !important;
+            justify-content: center !important;
+        }
+        
+        .justify-content-between {
+            -ms-flex-pack: justify !important;
+            justify-content: space-between !important;
+        }
+        
+        .justify-content-around {
+            -ms-flex-pack: distribute !important;
+            justify-content: space-around !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+
+            .justify-content-#{$breakpoint}-start {
+                -ms-flex-pack: start !important;
+                justify-content: flex-start !important;
+            }
+            
+            .justify-content-#{$breakpoint}-end {
+                -ms-flex-pack: end !important;
+                justify-content: flex-end !important;
+            }
+            
+            .justify-content-#{$breakpoint}-center {
+                -ms-flex-pack: center !important;
+                justify-content: center !important;
+            }
+            
+            .justify-content-#{$breakpoint}-between {
+                -ms-flex-pack: justify !important;
+                justify-content: space-between !important;
+            }
+            
+            .justify-content-#{$breakpoint}-around {
+                -ms-flex-pack: distribute !important;
+                justify-content: space-around !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage align-items --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+
+        .align-items-start {
+            -ms-flex-align: start !important;
+            align-items: flex-start !important;
+        }
+        
+        .align-items-end {
+            -ms-flex-align: end !important;
+            align-items: flex-end !important;
+        }
+        
+        .align-items-center {
+            -ms-flex-align: center !important;
+            align-items: center !important;
+        }
+        
+        .align-items-baseline {
+            -ms-flex-align: baseline !important;
+            align-items: baseline !important;
+        }
+        
+        .align-items-stretch {
+            -ms-flex-align: stretch !important;
+            align-items: stretch !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+
+            .align-items-#{$breakpoint}-start {
+                -ms-flex-align: start !important;
+                align-items: flex-start !important;
+            }
+            
+            .align-items-#{$breakpoint}-end {
+                -ms-flex-align: end !important;
+                align-items: flex-end !important;
+            }
+            
+            .align-items-#{$breakpoint}-center {
+                -ms-flex-align: center !important;
+                align-items: center !important;
+            }
+            
+            .align-items-#{$breakpoint}-baseline {
+                -ms-flex-align: baseline !important;
+                align-items: baseline !important;
+            }
+            
+            .align-items-#{$breakpoint}-stretch {
+                -ms-flex-align: stretch !important;
+                align-items: stretch !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage align-content --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+
+        .align-content-start {
+            -ms-flex-line-pack: start !important;
+            align-content: flex-start !important;
+        }
+        
+        .align-content-end {
+            -ms-flex-line-pack: end !important;
+            align-content: flex-end !important;
+        }
+        
+        .align-content-center {
+            -ms-flex-line-pack: center !important;
+            align-content: center !important;
+        }
+        
+        .align-content-between {
+            -ms-flex-line-pack: justify !important;
+            align-content: space-between !important;
+        }
+        
+        .align-content-around {
+            -ms-flex-line-pack: distribute !important;
+            align-content: space-around !important;
+        }
+        
+        .align-content-stretch {
+            -ms-flex-line-pack: stretch !important;
+            align-content: stretch !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+
+            .align-content-#{$breakpoint}-start {
+                -ms-flex-line-pack: start !important;
+                align-content: flex-start !important;
+            }
+            
+            .align-content-#{$breakpoint}-end {
+                -ms-flex-line-pack: end !important;
+                align-content: flex-end !important;
+            }
+            
+            .align-content-#{$breakpoint}-center {
+                -ms-flex-line-pack: center !important;
+                align-content: center !important;
+            }
+            
+            .align-content-#{$breakpoint}-between {
+                -ms-flex-line-pack: justify !important;
+                align-content: space-between !important;
+            }
+            
+            .align-content-#{$breakpoint}-around {
+                -ms-flex-line-pack: distribute !important;
+                align-content: space-around !important;
+            }
+            
+            .align-content-#{$breakpoint}-stretch {
+                -ms-flex-line-pack: stretch !important;
+                align-content: stretch !important;
+            }
+            
+        }
+    }
+}
+
+/* --------- manage align-self --------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @if $breakpoint == 'all' {
+
+        .align-self-auto {
+            -ms-flex-item-align: auto !important;
+            align-self: auto !important;
+        }
+        
+        .align-self-start {
+            -ms-flex-item-align: start !important;
+            align-self: flex-start !important;
+        }
+        
+        .align-self-end {
+            -ms-flex-item-align: end !important;
+            align-self: flex-end !important;
+        }
+        
+        .align-self-center {
+            -ms-flex-item-align: center !important;
+            align-self: center !important;
+        }
+        
+        .align-self-baseline {
+            -ms-flex-item-align: baseline !important;
+            align-self: baseline !important;
+        }
+        
+        .align-self-stretch {
+            -ms-flex-item-align: stretch !important;
+            align-self: stretch !important;
+        }
+        
+    } @else {
+        @media (min-width: #{$width}) {
+            
+            .align-self-#{$breakpoint}-auto {
+                -ms-flex-item-align: auto !important;
+                align-self: auto !important;
+            }
+            
+            .align-self-#{$breakpoint}-start {
+                -ms-flex-item-align: start !important;
+                align-self: flex-start !important;
+            }
+            
+            .align-self-#{$breakpoint}-end {
+                -ms-flex-item-align: end !important;
+                align-self: flex-end !important;
+            }
+            
+            .align-self-#{$breakpoint}-center {
+                -ms-flex-item-align: center !important;
+                align-self: center !important;
+            }
+            
+            .align-self-#{$breakpoint}-baseline {
+                -ms-flex-item-align: baseline !important;
+                align-self: baseline !important;
+            }
+            
+            .align-self-#{$breakpoint}-stretch {
+                -ms-flex-item-align: stretch !important;
+                align-self: stretch !important;
+            }
+
+        }
+    }
+}
+
+/* --------- manage box-shadow --------- */
+
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}
+
+.shadow-none {
+    box-shadow: none;
+}
+
+/* --------- manage images styles --------- */
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-thumbnail {
+    padding: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    max-width: 100%;
+    height: auto;
+}
+
+svg {
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+/* --------- General styles --------- */
+
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+[hidden] {
+    display: none !important;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ----------------------------------------------------------- */
+/* ---------------------- border-radius ---------------------- */
+/* --------------------- fs for font-size -------------------- */
+/* --------- (p, pt, pr, pb, pl, px, py) for padding --------- */
+/* ---------- (m, mt, mr, mb, ml, mx, my) for margin --------- */
+/* ----------------------------------------------------------- */
+
+@each $breakpoint, $width in $breakpoints {
+
+    @for $i from 0 through 100 {    
+        
+        @if $breakpoint == 'all' {
+            
+            .border-radius-#{$i} {
+                border-radius: $i * 1px !important;
+            }
+            
+            .fs-#{$i} {
+                font-size: $i * 1px !important;
+            }
+            
+            .p-#{$i} {
+                padding: $i * 1px !important;
+            }
+            
+            .pt-#{$i},
+            .py-#{$i} {
+                padding-top: $i * 1px !important;
+            }
+            
+            .pr-#{$i},
+            .px-#{$i} {
+                padding-right: $i * 1px !important;
+            }
+            
+            .pb-#{$i},
+            .py-#{$i} {
+                padding-bottom: $i * 1px !important;
+            }
+            
+            .pl-#{$i},
+            .px-#{$i} {
+                padding-left: $i * 1px !important;
+            }
+            
+            .m-#{$i} {
+                margin: $i * 1px !important;
+            }
+            
+            .mt-#{$i},
+            .my-#{$i}{
+                margin-top: $i * 1px !important;
+            }
+            
+            .mr-#{$i},
+            .mx-#{$i} {
+                margin-right: $i * 1px !important;
+            }
+            
+            .mb-#{$i},
+            .my-#{$i} {
+                margin-bottom: $i * 1px !important;
+            }
+            
+            .ml-#{$i},
+            .mx-#{$i}{
+                margin-left: $i * 1px !important;
+            }
+            
+            .h-#{$i} {
+                height: $i * 1px !important;
+            }
+            
+            .w-#{$i} {
+                width: $i * 1px !important;
+            }
+            
+            .top-#{$i} {
+                top: $i * 1px !important;
+            }
+            
+            .right-#{$i} {
+                right: $i * 1px !important;
+            }
+            
+            .bottom-#{$i} {
+                bottom: $i * 1px !important;
+            }
+            
+            .left-#{$i} {
+                left: $i * 1px !important;
+            }
+            
+        } @else {
+            @media (min-width: #{$width}) {
+                
+                .border-radius-#{$breakpoint}-#{$i} {
+                    border-radius: $i * 1px !important;
+                }
+                
+                .fs-#{$breakpoint}-#{$i} {
+                    font-size: $i * 1px !important;
+                }
+                
+                .p-#{$breakpoint}-#{$i} {
+                    padding: $i * 1px !important;
+                }
+                
+                .pt-#{$breakpoint}-#{$i},
+                .py-#{$breakpoint}-#{$i} {
+                    padding-top: $i * 1px !important;
+                }
+                
+                .pr-#{$breakpoint}-#{$i},
+                .px-#{$breakpoint}-#{$i} {
+                    padding-right: $i * 1px !important;
+                }
+                
+                .pb-#{$breakpoint}-#{$i},
+                .py-#{$breakpoint}-#{$i} {
+                    padding-bottom: $i * 1px !important;
+                }
+                
+                .pl-#{$breakpoint}-#{$i},
+                .px-#{$breakpoint}-#{$i} {
+                    padding-left: $i * 1px !important;
+                }
+                
+                .m-#{$breakpoint}-#{$i} {
+                    margin: $i * 1px !important;
+                }
+                
+                .mt-#{$breakpoint}-#{$i},
+                .my-#{$breakpoint}-#{$i}{
+                    margin-top: $i * 1px !important;
+                }
+                
+                .mr-#{$breakpoint}-#{$i},
+                .mx-#{$breakpoint}-#{$i} {
+                    margin-right: $i * 1px !important;
+                }
+                
+                .mb-#{$breakpoint}-#{$i},
+                .my-#{$breakpoint}-#{$i} {
+                    margin-bottom: $i * 1px !important;
+                }
+                
+                .ml-#{$breakpoint}-#{$i},
+                .mx-#{$breakpoint}-#{$i}{
+                    margin-left: $i * 1px !important;
+                }
+                
+                .h-#{$breakpoint}-#{$i} {
+                    height: $i * 1px !important;
+                }
+                
+                .w-#{$breakpoint}-#{$i} {
+                    width: $i * 1px !important;
+                }
+                
+                .top-#{$breakpoint}-#{$i} {
+                    top: $i * 1px !important;
+                }
+                
+                .right-#{$breakpoint}-#{$i} {
+                    right: $i * 1px !important;
+                }
+                
+                .bottom-#{$breakpoint}-#{$i} {
+                    bottom: $i * 1px !important;
+                }
+                
+                .left-#{$breakpoint}-#{$i} {
+                    left: $i * 1px !important;
+                }
+                
+            }
+        }
+    }
+}
+
+/* ---------------------- For Percentage ---------------------- */
+
+@each $breakpoint, $width in $breakpoints {
+    
+    @for $i from 0 through 100 {
+        
+        @if $breakpoint == 'all' {
+            
+            .p-#{$i}-pr {
+                padding: $i * 1% !important;
+            }
+            
+            .pt-#{$i}-pr,
+            .py-#{$i}-pr {
+                padding-top: $i * 1% !important;
+            }
+            
+            .pr-#{$i}-pr,
+            .px-#{$i}-pr {
+                padding-right: $i * 1% !important;
+            }
+            
+            .pb-#{$i}-pr,
+            .py-#{$i}-pr {
+                padding-bottom: $i * 1% !important;
+            }
+            
+            .pl-#{$i}-pr,
+            .px-#{$i}-pr {
+                padding-left: $i * 1% !important;
+            }
+            
+            .m-#{$i}-pr{
+                margin: $i * 1% !important;
+            }
+            
+            .mt-#{$i}-pr,
+            .my-#{$i}-pr{
+                margin-top: $i * 1% !important;
+            }
+            
+            .mr-#{$i}-pr,
+            .mx-#{$i}-pr {
+                margin-right: $i * 1% !important;
+            }
+            
+            .mb-#{$i}-pr,
+            .my-#{$i}-pr {
+                margin-bottom: $i * 1% !important;
+            }
+            
+            .ml-#{$i}-pr,
+            .mx-#{$i}-pr{
+                margin-left: $i * 1% !important;
+            }
+            
+            .h-#{$i}-pr {
+                height: $i * 1% !important;
+            }
+            .w-#{$i}-pr {
+                width: $i * 1% !important;
+            }
+            
+            .top-#{$i}-pr {
+                top: $i * 1% !important;
+            }
+            
+            .right-#{$i}-pr {
+                right: $i * 1% !important;
+            }
+            
+            .bottom-#{$i}-pr {
+                bottom: $i * 1% !important;
+            }
+            
+            .left-#{$i}-pr {
+                left: $i * 1% !important;
+            }
+            
+        } @else {
+            @media (min-width: #{$width}) {
+                
+                .p-#{$breakpoint}-#{$i}-pr {
+                    padding: $i * 1% !important;
+                }
+                
+                .pt-#{$breakpoint}-#{$i}-pr,
+                .py-#{$breakpoint}-#{$i}-pr {
+                    padding-top: $i * 1% !important;
+                }
+                
+                .pr-#{$breakpoint}-#{$i}-pr,
+                .px-#{$breakpoint}-#{$i}-pr {
+                    padding-right: $i * 1% !important;
+                }
+                
+                .pb-#{$breakpoint}-#{$i}-pr,
+                .py-#{$breakpoint}-#{$i}-pr {
+                    padding-bottom: $i * 1% !important;
+                }
+                
+                .pl-#{$breakpoint}-#{$i}-pr,
+                .px-#{$breakpoint}-#{$i}-pr {
+                    padding-left: $i * 1% !important;
+                }
+                
+                .m-#{$breakpoint}-#{$i}-pr{
+                    margin: $i * 1% !important;
+                }
+                
+                .mt-#{$breakpoint}-#{$i}-pr,
+                .my-#{$breakpoint}-#{$i}-pr{
+                    margin-top: $i * 1% !important;
+                }
+                
+                .mr-#{$breakpoint}-#{$i}-pr,
+                .mx-#{$breakpoint}-#{$i}-pr {
+                    margin-right: $i * 1% !important;
+                }
+                
+                .mb-#{$breakpoint}-#{$i}-pr,
+                .my-#{$breakpoint}-#{$i}-pr {
+                    margin-bottom: $i * 1% !important;
+                }
+                
+                .ml-#{$breakpoint}-#{$i}-pr,
+                .mx-#{$breakpoint}-#{$i}-pr{
+                    margin-left: $i * 1% !important;
+                }
+                
+                .h-#{$breakpoint}-#{$i}-pr {
+                    height: $i * 1% !important;
+                }
+                .w-#{$breakpoint}-#{$i}-pr {
+                    width: $i * 1% !important;
+                }
+                
+                .top-#{$breakpoint}-#{$i}-pr {
+                    top: $i * 1% !important;
+                }
+                
+                .right-#{$breakpoint}-#{$i}-pr {
+                    right: $i * 1% !important;
+                }
+                
+                .bottom-#{$breakpoint}-#{$i}-pr {
+                    bottom: $i * 1% !important;
+                }
+                
+                .left-#{$breakpoint}-#{$i}-pr {
+                    left: $i * 1% !important;
+                }
+            }
+        }
+    }
+}

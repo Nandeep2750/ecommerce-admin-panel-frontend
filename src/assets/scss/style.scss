@@ -1,0 +1,168 @@
+/* Custom style to override any styles. */
+
+/* ------------ Variables ------------ */
+
+$header-height : 64px;
+$sidebar-width : 200px;
+
+$theme-colors: (
+    "242F6B": #242F6B,
+);
+
+/* -------------------------------- */
+/* ------------ Styles ------------ */
+/* -------------------------------- */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* ------------------------  Backgroung ------------------------ */
+@each $color, $color-code in $theme-colors {
+    .bg-#{$color} {
+        background-color: $color-code;
+    }
+}
+
+/* ------------------------ Layout ------------------------ */
+
+/* ------------ header ------------ */
+
+.header {
+    padding: 0 24px;
+    z-index: 1;
+
+    .logo {
+        float: left;
+        width: calc(#{$sidebar-width} - 2*24px);
+        height: 31px;
+        margin: 16px 24px 16px 0;
+    }
+}
+
+.fixed-header {
+    position: fixed;
+    width: 100% !important;
+}
+
+
+/* ------------ sidebar ------------ */
+
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+
+    .logo {
+        height: 32px;
+        margin: 16px;
+    }
+}
+
+.ant-layout-sider-zero-width-trigger {
+    opacity: 0.6;
+}
+
+/* ------------ sidebar ------------ */
+
+.page-wrapper {
+    margin-left: $sidebar-width;
+    margin-top: $header-height;
+
+    min-height: calc(100vh - #{$header-height});
+
+    .content {
+        padding: 30px 32px 0;
+
+        .page-header {
+            margin-bottom: 20px;
+
+            .page-title {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.footer {
+    text-align: center;
+}
+
+/* ------------------------ End Layout ------------------------ */
+
+.loader-section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.center-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.auth-card {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1);
+}
+
+/* -------- auth-page -------- */
+
+.auth-page{
+    background-size: cover;
+}
+
+.auth-card .ant-card-body {
+    padding: 0;
+}
+
+/* -------- 404 -------- */
+
+.error-svg{
+    width: 30%;
+    height: auto;
+}
+
+/* -------- @media min-width -------- */
+
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {}
+
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+/* -------- @media max-width -------- */
+
+@media (max-width: 1199.99px) {}
+
+@media (max-width: 991.99px) {
+    .page-wrapper {
+        margin-left: 0;
+    }
+
+    .header {
+        .logo {
+            margin: unset;
+        }
+    }
+}
+
+@media (max-width: 767.99px) {
+
+    .page-wrapper {
+        .content {
+            padding: 20px 20px 0;
+        }
+    }
+}
+
+@media (max-width: 575.99px) {}
