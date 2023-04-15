@@ -1,7 +1,6 @@
 const MODULE_SLUG = Object.freeze({
     USER: "USER",
-    STATIC_PAGE:"STATIC_PAGE",
-    TASK_TYPE:"TASK_TYPE"
+    PRODUCT:"PRODUCT",
 });
 
 const APP_ENV_TYPE = Object.freeze({
