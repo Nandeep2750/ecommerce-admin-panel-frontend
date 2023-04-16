@@ -95,10 +95,6 @@ const Index = (props) => {
     };
 
     const tableColumns = [
-        // {
-        //     title: "Order Id",
-        //     dataIndex: "_id",
-        // },
         {
             title: "User",
             dataIndex: "userId",
@@ -117,6 +113,13 @@ const Index = (props) => {
                         ))}
                     </>
                 )
+            }
+        },
+        {
+            title: "Order Date",
+            dataIndex: "createdAt",
+            render: (data, record) => {
+                return moment(data).format('DD-MMM-YYYY')
             }
         },
         {
