@@ -3,6 +3,7 @@ import { Card, Col, Layout, notification, Row } from 'antd';
 import {
     UserOutlined,
     AppstoreAddOutlined,
+    ApartmentOutlined,
 } from '@ant-design/icons';
 
 import {
@@ -29,12 +30,19 @@ const Index = () => {
             icon: UserOutlined,
             countKey: 'users',
             link: LOCATIONS.USER_ROUTE.ROOT
-        }, [MODULE_SLUG.PRODUCT]: {
+        },  
+        [MODULE_SLUG.CATEGORY]: {
+            name: "Categories",
+            icon: ApartmentOutlined,
+            countKey: 'categories',
+            link: LOCATIONS.CATEGORY_ROUTE.ROOT
+        },
+        [MODULE_SLUG.PRODUCT]: {
             name: "Products",
             icon: AppstoreAddOutlined,
             countKey: 'products',
             link: LOCATIONS.PRODUCT_ROUTE.ROOT
-        }
+        },
     }
 
     useEffect(() => {
