@@ -33,7 +33,7 @@ const side_menu_items_for_all = [
     {
         key: LOCATIONS.ORDER_ROUTE.ROOT,
         icon: <ContainerOutlined />,
-        label: `Orders`,
+        label: `Orders & Reports`,
     },
 ]
 
