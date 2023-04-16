@@ -5,7 +5,7 @@ import BreadcrumbComponent from '../../common/Breadcrumb';
 import { itemRender } from '../../../helper/Paginationfunction';
 import { LOCATIONS } from '../../../config/routeConfig';
 import { CURRENCY, PAGINATION } from '../../../config/constants';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import api from "../../../helper/Api";
 
 
@@ -82,7 +82,6 @@ const Index = (props) => {
             title: "Category",
             dataIndex: "categoryId",
             render: (_text, record) => {
-                console.log("🚀 ~ file: Index.jsx:89 ~ Index ~ record:", record)
                 return record.categoryId.categoryName
             }
         },
@@ -100,21 +99,21 @@ const Index = (props) => {
                 return CURRENCY + " " + text 
             }
         },
-        // {
-        //     title: "Actions",
-        //     dataIndex: "actions",
-        //     render: (_text, record) => {
-        //         let editUrl = LOCATIONS.STATIC_PAGE_ROUTE.EDIT.replace(':staticPageId', record._id);
-        //         let viewUrl = LOCATIONS.STATIC_PAGE_ROUTE.VIEW.replace(':staticPageId', record._id);
-        //         return (
-        //             <Space size={10}>
-        //                 <Button type="link" shape="circle" icon={<EyeOutlined />} loading={false} onClick={() => navigate(viewUrl)} />
-        //                 <Button type="link" shape="circle" icon={<EditOutlined />} loading={false} onClick={() => navigate(editUrl)} />
-        //             </Space>
-        //         )
+        {
+            title: "Actions",
+            dataIndex: "_id",
+            render: (text, record) => {
+                let editUrl = LOCATIONS.PRODUCT_ROUTE.EDIT.replace(':productId', text);
+                // let viewUrl = LOCATIONS.PRODUCT_ROUTE.VIEW.replace(':productId', text);
+                return (
+                    <Space size={10}>
+                        {/* <Button type="link" shape="circle" icon={<EyeOutlined />} loading={false} onClick={() => navigate(viewUrl)} /> */}
+                        <Button type="link" shape="circle" icon={<EditOutlined />} loading={false} onClick={() => navigate(editUrl)} />
+                    </Space>
+                )
 
-        //     }
-        // }
+            }
+        }
     ];
 
     const tableData = products;
@@ -128,13 +127,13 @@ const Index = (props) => {
             <div className='content-wrapper'>
                 <Card
                     title="Products list"
-                    // extra={
-                    //     <Button type="primary" htmlType="button" >
-                    //         <Link to={LOCATIONS.STATIC_PAGE_ROUTE.ADD}>
-                    //             Add Product
-                    //         </Link>
-                    //     </Button>
-                    // }
+                    extra={
+                        <Button type="primary" htmlType="button" >
+                            <Link to={LOCATIONS.PRODUCT_ROUTE.ADD}>
+                                Add Product
+                            </Link>
+                        </Button>
+                    }
                 >
                     <Form name="horizontal_login" className="justify-content-end mb-20" layout="inline">
                         <Form.Item name="search">

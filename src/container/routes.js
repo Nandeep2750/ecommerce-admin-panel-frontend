@@ -23,6 +23,7 @@ const Category = lazy(() => import("../components/pages/Category/Index"));
 
 /* Product Module */
 const Product = lazy(() => import("../components/pages/Product/Index"));
+const AddEditProduct = lazy(() => import("../components/pages/Product/AddEditProduct"));
 
 const routes = (loggedIn) => {
 
@@ -54,8 +55,8 @@ const routes = (loggedIn) => {
           element: <Outlet />,
           children: [
             { path: LOCATIONS.PRODUCT_ROUTE.ROOT, element: <Product />, },
-            // { path: LOCATIONS.PRODUCT_ROUTE.ADD, element: <AddEditUser operationType={OPERATIONS.ADD} /> },
-            // { path: LOCATIONS.PRODUCT_ROUTE.EDIT, element: <AddEditUser operationType={OPERATIONS.EDIT} /> },
+            { path: LOCATIONS.PRODUCT_ROUTE.ADD, element: <AddEditProduct operationType={OPERATIONS.ADD} /> },
+            { path: LOCATIONS.PRODUCT_ROUTE.EDIT, element: <AddEditProduct operationType={OPERATIONS.EDIT} /> },
           ]
         },
         { path: LOCATIONS.CATEGORY_ROUTE.ROOT, element: <Category /> },
