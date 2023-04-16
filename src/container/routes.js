@@ -6,6 +6,7 @@ import { LOCATIONS } from "../config/routeConfig";
 /* Layouts */
 import GuestLayout from "../layout/GuestLayout";
 import ProtectedLayout from "../layout/ProtectedLayout";
+import { OPERATIONS } from "../config/constants";
 
 /* Pages */
 const Login = lazy(() => import("../components/pages/Auth/Login"));
@@ -15,6 +16,7 @@ const ChangePassword = lazy(() => import("../components/pages/ChangePassword/Ind
 
 /* User */
 const User = lazy(() => import("../components/pages/User/Index"));
+const AddEditUser = lazy(() => import("../components/pages/User/AddEditUser"));
 
 const routes = (loggedIn) => {
 
@@ -32,7 +34,15 @@ const routes = (loggedIn) => {
       element: loggedIn ? <ProtectedLayout><Outlet /></ProtectedLayout> : <Navigate to={LOCATIONS.LOGIN_ROUTE} />,
       children: [
         { path: LOCATIONS.DASHBOARD_ROUTE, element: <Dashboard /> },
-        { path: LOCATIONS.USER_ROUTE.ROOT, element: <User /> },
+        {
+          path: LOCATIONS.USER_ROUTE.ROOT,
+          element: <Outlet />,
+          children: [
+            { path: LOCATIONS.USER_ROUTE.ROOT, element: <User />, },
+            { path: LOCATIONS.USER_ROUTE.ADD, element: <AddEditUser operationType={OPERATIONS.ADD} /> },
+            { path: LOCATIONS.USER_ROUTE.EDIT, element: <AddEditUser operationType={OPERATIONS.EDIT} /> },
+          ]
+        },
         { path: LOCATIONS.CHANGE_PASSWORD_ROUTE, element: <ChangePassword /> },
         { path: LOCATIONS.PROFILE_ROUTE, element: <Profile /> },
       ],

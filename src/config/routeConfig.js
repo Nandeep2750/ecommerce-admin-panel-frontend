@@ -7,6 +7,8 @@ const CHANGE_PASSWORD_ROUTE = '/change-password';
 
 const USER_ROUTE = {
     ROOT:'/user',
+    ADD:'/user/add',
+    EDIT:'/user/edit/:userId',
 }
 
 const PRODUCT_ROUTE = {

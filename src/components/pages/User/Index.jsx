@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Card, Table, Form, Input, notification, Switch } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import { Layout, Card, Table, Form, Input, notification, Switch, Button, Space } from 'antd';
+import { EditOutlined, SearchOutlined } from '@ant-design/icons';
 import BreadcrumbComponent from '../../common/Breadcrumb';
 import { itemRender } from '../../../helper/Paginationfunction';
 import { LOCATIONS } from '../../../config/routeConfig';
 import { GENDER, PAGINATION, TOGGLE } from '../../../config/constants';
 import api from "../../../helper/Api";
+import { Link, useNavigate } from 'react-router-dom';
 
 const { Content } = Layout;
 
 const Index = (props) => {
-
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(true);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pageSize, setPageSize] = useState(PAGINATION.DEFAULT_PAGE_SIZE);
@@ -115,7 +116,7 @@ const Index = (props) => {
             title: "Gender",
             dataIndex: "gender",
             render: (text, record) => {
-                return GENDER[text]
+                return GENDER[text].LABLE
             }
         },
         {
@@ -130,6 +131,19 @@ const Index = (props) => {
                     loading={editUserData && editUserData._id === record._id}
                     style={{ width: 80 }}
                 />
+            }
+        },
+        {
+            title: "Actions",
+            dataIndex: "_id",
+            render: (text, record) => {
+                let editUrl = LOCATIONS.USER_ROUTE.EDIT.replace(':userId', text);
+                return (
+                    <Space size={10}>
+                        <Button type="link" shape="circle" icon={<EditOutlined />} loading={false} onClick={() => navigate(editUrl)} />
+                    </Space>
+                )
+
             }
         }
     ];
@@ -146,6 +160,13 @@ const Index = (props) => {
             <div className='content-wrapper'>
                 <Card
                     title="Users list"
+                    extra={
+                        <Button type="primary" htmlType="button" >
+                            <Link to={LOCATIONS.USER_ROUTE.ADD}>
+                                Add User
+                            </Link>
+                        </Button>
+                    }
                 >
                     <Form name="horizontal_login" className="justify-content-end mb-20" layout="inline">
                         <Form.Item name="search">

@@ -3,6 +3,13 @@ const PAGINATION = Object.freeze({
     DEFAULT_PAGE_NO: 1
 });
 
+const OPERATIONS = Object.freeze({
+    ADD:"ADD",
+    EDIT:"EDIT",
+    DELETE:"DELETE",
+    VIEW:"VIEW"
+})
+
 const MODULE_SLUG = Object.freeze({
     USER: "USER",
     PRODUCT:"PRODUCT",
@@ -22,8 +29,14 @@ const LOGIN_DATA= {
 }
 
 const GENDER = Object.freeze({
-    MALE: "Male",
-    FEMALE: "Female"
+    MALE: {
+        LABLE:"Male",
+        VALUE:"MALE"
+    },
+    FEMALE: {
+        LABLE:"Female",
+        VALUE:"FEMALE"
+    },
 });
 
 const TOGGLE = Object.freeze({
@@ -46,6 +59,7 @@ const ADMIN_CONFIG = Object.freeze({
 
 module.exports = {
     PAGINATION,
+    OPERATIONS,
     MODULE_SLUG,
     APP_ENV_TYPE,
     API_BASEURL: process.env.REACT_APP_API_BASEURL,
