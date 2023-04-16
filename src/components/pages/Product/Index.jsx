@@ -126,10 +126,10 @@ const Index = (props) => {
             dataIndex: "_id",
             render: (text, record) => {
                 let editUrl = LOCATIONS.PRODUCT_ROUTE.EDIT.replace(':productId', text);
-                // let viewUrl = LOCATIONS.PRODUCT_ROUTE.VIEW.replace(':productId', text);
+                let viewUrl = LOCATIONS.PRODUCT_ROUTE.VIEW.replace(':productId', text);
                 return (
                     <Space size={10}>
-                        {/* <Button type="link" shape="circle" icon={<EyeOutlined />} loading={false} onClick={() => navigate(viewUrl)} /> */}
+                        <Button type="link" shape="circle" icon={<EyeOutlined />} loading={false} onClick={() => navigate(viewUrl)} />
                         <Button type="link" shape="circle" icon={<EditOutlined />} loading={false} onClick={() => navigate(editUrl)} />
                         <Popconfirm
                             placement="bottomRight"

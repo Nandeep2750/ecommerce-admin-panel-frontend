@@ -195,6 +195,12 @@ export const AddEditProduct = ({ operationType }) => {
                             <Form.Item label="Description" name="productDescription" required>
                                 <CKEditor
                                     editor={DecoupledEditor}
+                                    onReady={(editor) => {
+                                        editor?.ui?.getEditableElement()?.parentElement?.insertBefore(
+                                            editor.ui.view.toolbar.element,
+                                            editor.ui.getEditableElement()
+                                        );
+                                    }}
                                     data={formik.values.productDescription}
                                     name="productDescription"
                                     onChange={(event, editor) => {
