@@ -18,8 +18,11 @@ const ChangePassword = lazy(() => import("../components/pages/ChangePassword/Ind
 const User = lazy(() => import("../components/pages/User/Index"));
 const AddEditUser = lazy(() => import("../components/pages/User/AddEditUser"));
 
-/* Product Module */
+/* Category Module */
 const Category = lazy(() => import("../components/pages/Category/Index"));
+
+/* Product Module */
+const Product = lazy(() => import("../components/pages/Product/Index"));
 
 const routes = (loggedIn) => {
 
@@ -44,6 +47,15 @@ const routes = (loggedIn) => {
             { path: LOCATIONS.USER_ROUTE.ROOT, element: <User />, },
             { path: LOCATIONS.USER_ROUTE.ADD, element: <AddEditUser operationType={OPERATIONS.ADD} /> },
             { path: LOCATIONS.USER_ROUTE.EDIT, element: <AddEditUser operationType={OPERATIONS.EDIT} /> },
+          ]
+        },
+        {
+          path: LOCATIONS.PRODUCT_ROUTE.ROOT,
+          element: <Outlet />,
+          children: [
+            { path: LOCATIONS.PRODUCT_ROUTE.ROOT, element: <Product />, },
+            // { path: LOCATIONS.PRODUCT_ROUTE.ADD, element: <AddEditUser operationType={OPERATIONS.ADD} /> },
+            // { path: LOCATIONS.PRODUCT_ROUTE.EDIT, element: <AddEditUser operationType={OPERATIONS.EDIT} /> },
           ]
         },
         { path: LOCATIONS.CATEGORY_ROUTE.ROOT, element: <Category /> },

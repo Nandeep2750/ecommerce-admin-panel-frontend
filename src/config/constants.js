@@ -58,6 +58,8 @@ const ADMIN_CONFIG = Object.freeze({
     }
 });
 
+const CURRENCY = '₹'
+
 module.exports = {
     PAGINATION,
     OPERATIONS,
@@ -71,5 +73,6 @@ module.exports = {
     
     REDUX_LOCAL_STORE_KEY: 'quick-mart-data',
     TOGGLE,
-    ADMIN_CONFIG
+    ADMIN_CONFIG,
+    CURRENCY
 }
