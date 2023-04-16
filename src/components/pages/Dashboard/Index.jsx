@@ -4,6 +4,7 @@ import {
     UserOutlined,
     AppstoreAddOutlined,
     ApartmentOutlined,
+    ContainerOutlined,
 } from '@ant-design/icons';
 
 import {
@@ -42,6 +43,12 @@ const Index = () => {
             icon: AppstoreAddOutlined,
             countKey: 'products',
             link: LOCATIONS.PRODUCT_ROUTE.ROOT
+        },
+        [MODULE_SLUG.ORDER]: {
+            name: "Orders",
+            icon: ContainerOutlined,
+            countKey: 'orders',
+            link: LOCATIONS.ORDER_ROUTE.ROOT
         },
     }
 

@@ -12,8 +12,9 @@ const OPERATIONS = Object.freeze({
 
 const MODULE_SLUG = Object.freeze({
     USER: "USER",
-    PRODUCT:"PRODUCT",
     CATEGORY:"CATEGORY",
+    PRODUCT:"PRODUCT",
+    ORDER:"ORDER",
 });
 
 const APP_ENV_TYPE = Object.freeze({
