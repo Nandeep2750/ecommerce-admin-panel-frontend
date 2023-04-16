@@ -63,15 +63,14 @@ const Index = (props) => {
                     message: res.data.message,
                 });
             }
-        })
-            .catch((err) => {
-                setLoading(false);
-                if (err.response && err.response.data) {
-                    notification.error({
-                        message: err.response.data.message,
-                    });
-                }
-            });
+        }).catch((err) => {
+            setLoading(false);
+            if (err.response && err.response.data) {
+                notification.error({
+                    message: err.response.data.message,
+                });
+            }
+        });
     };
 
     const handleDelete = (id) => {
@@ -86,7 +85,7 @@ const Index = (props) => {
                     message: res.data.message
                 })
             }
-          }).catch((err) => {
+        }).catch((err) => {
             if (err.response && err.response.data) {
                 notification.error({
                     message: err.response.data.message,
@@ -110,23 +109,23 @@ const Index = (props) => {
         {
             title: "Image",
             dataIndex: "productImageUrl",
-            render: (text, record) => {
-                return (<img src={text} onError={(e) => e.target.src = getPlaceholderImage(80,100,"Product")} alt={record.productName} height={100} />)
+            render: (data, record) => {
+                return (<img src={data} onError={(e) => e.target.src = getPlaceholderImage(80, 100, "Product")} alt={record.productName} height={100} />)
             }
         },
         {
             title: "Price",
             dataIndex: "productPrice",
-            render: (text, record) => {
-                return CURRENCY + " " + text 
+            render: (data, record) => {
+                return CURRENCY + " " + data
             }
         },
         {
             title: "Actions",
             dataIndex: "_id",
-            render: (text, record) => {
-                let editUrl = LOCATIONS.PRODUCT_ROUTE.EDIT.replace(':productId', text);
-                let viewUrl = LOCATIONS.PRODUCT_ROUTE.VIEW.replace(':productId', text);
+            render: (data, record) => {
+                let editUrl = LOCATIONS.PRODUCT_ROUTE.EDIT.replace(':productId', data);
+                let viewUrl = LOCATIONS.PRODUCT_ROUTE.VIEW.replace(':productId', data);
                 return (
                     <Space size={10}>
                         <Button type="link" shape="circle" icon={<EyeOutlined />} loading={false} onClick={() => navigate(viewUrl)} />
@@ -134,11 +133,11 @@ const Index = (props) => {
                         <Popconfirm
                             placement="bottomRight"
                             title="Are you sure want to delete this product?"
-                            onConfirm={()=> handleDelete(record._id)}
+                            onConfirm={() => handleDelete(record._id)}
                             okText="Yes"
                             cancelText="No"
                         >
-                            <Button type="link" shape="circle" icon={<DeleteOutlined />} loading={false}  />
+                            <Button type="link" shape="circle" icon={<DeleteOutlined />} loading={false} />
                         </Popconfirm>
                     </Space>
                 )

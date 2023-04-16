@@ -22,6 +22,10 @@ const PRODUCT_ROUTE = {
     VIEW:'/product/view/:productId'
 }
 
+const ORDER_ROUTE = {
+    ROOT:'/order',
+}
+
 const ERROR_ROUTE = {
     404:'*',
 }
@@ -35,5 +39,6 @@ export const LOCATIONS = Object.freeze({
     USER_ROUTE,
     CATEGORY_ROUTE,
     PRODUCT_ROUTE,
+    ORDER_ROUTE,
     ERROR_ROUTE
 });

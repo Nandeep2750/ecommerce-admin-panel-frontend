@@ -26,6 +26,9 @@ const Product = lazy(() => import("../components/pages/Product/Index"));
 const AddEditProduct = lazy(() => import("../components/pages/Product/AddEditProduct"));
 const ViewProduct = lazy(() => import("../components/pages/Product/ViewProduct"));
 
+/* Order Module */
+const Order = lazy(() => import("../components/pages/Order/Index"));
+
 const routes = (loggedIn) => {
 
   return [
@@ -62,6 +65,7 @@ const routes = (loggedIn) => {
           ]
         },
         { path: LOCATIONS.CATEGORY_ROUTE.ROOT, element: <Category /> },
+        { path: LOCATIONS.ORDER_ROUTE.ROOT, element: <Order /> },
         { path: LOCATIONS.CHANGE_PASSWORD_ROUTE, element: <ChangePassword /> },
         { path: LOCATIONS.PROFILE_ROUTE, element: <Profile /> },
       ],

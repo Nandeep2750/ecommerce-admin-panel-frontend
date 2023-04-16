@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import {
-    HomeOutlined, UserOutlined, ApartmentOutlined, AppstoreAddOutlined
+    HomeOutlined, UserOutlined, ApartmentOutlined, AppstoreAddOutlined, ContainerOutlined
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -29,6 +29,11 @@ const side_menu_items_for_all = [
         key: LOCATIONS.PRODUCT_ROUTE.ROOT,
         icon: <AppstoreAddOutlined />,
         label: `Products`,
+    },
+    {
+        key: LOCATIONS.ORDER_ROUTE.ROOT,
+        icon: <ContainerOutlined />,
+        label: `Orders`,
     },
 ]
 

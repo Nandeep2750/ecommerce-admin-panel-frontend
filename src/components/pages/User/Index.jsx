@@ -115,8 +115,8 @@ const Index = (props) => {
         {
             title: "Gender",
             dataIndex: "gender",
-            render: (text, record) => {
-                return GENDER[text].LABLE
+            render: (data, record) => {
+                return GENDER[data].LABLE
             }
         },
         {
@@ -136,8 +136,8 @@ const Index = (props) => {
         {
             title: "Actions",
             dataIndex: "_id",
-            render: (text, record) => {
-                let editUrl = LOCATIONS.USER_ROUTE.EDIT.replace(':userId', text);
+            render: (data, record) => {
+                let editUrl = LOCATIONS.USER_ROUTE.EDIT.replace(':userId', data);
                 return (
                     <Space size={10}>
                         <Button type="link" shape="circle" icon={<EditOutlined />} loading={false} onClick={() => navigate(editUrl)} />

@@ -140,11 +140,11 @@ const Index = () => {
         {
             title: "Status",
             dataIndex: "status",
-            render: (text, record) => {
+            render: (data, record) => {
                 return <Switch
                     onChange={(checked) => handleStatusChange(checked, record)}
                     checkedChildren={TOGGLE.ACTIVE.LABLE}
-                    checked={text === TOGGLE.ACTIVE.VALUE}
+                    checked={data === TOGGLE.ACTIVE.VALUE}
                     unCheckedChildren={TOGGLE.INACTIVE.LABLE}
                     loading={editCategoryData?._id === record._id}
                     style={{ width: 80 }}
