@@ -10,6 +10,7 @@ import { OPERATIONS } from "../config/constants";
 
 /* Pages */
 const Login = lazy(() => import("../components/pages/Auth/Login"));
+const SignUp = lazy(() => import("../components/pages/Auth/SignUp"));
 const Dashboard = lazy(() => import("../components/pages/Dashboard/Index"));
 const Profile = lazy(() => import("../components/pages/Profile/Index"));
 const ChangePassword = lazy(() => import("../components/pages/ChangePassword/Index"));
@@ -37,6 +38,7 @@ const routes = (loggedIn) => {
       element: !loggedIn ? <GuestLayout><Outlet /></GuestLayout> : <Navigate to={LOCATIONS.DASHBOARD_ROUTE} />,
       children: [
         { path: LOCATIONS.LOGIN_ROUTE, element: <Login /> },
+        { path: LOCATIONS.SIGNUP_ROUTE, element: <SignUp /> },
         { path: LOCATIONS.ROOT, element: <Navigate to={LOCATIONS.LOGIN_ROUTE} /> },
       ],
     },

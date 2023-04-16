@@ -180,7 +180,7 @@ const Index = (props) => {
                             </Col>
                         </Row>
                     </Form>
-                    <Alert message={`Total ${totalRecords} ${totalRecords > 0 ? 'orders' : 'order'} placed ${selectedUser ? `by ${selectedUser.firstName + " " + selectedUser.lastName}` : ""} ${date ? `on ${moment(date).format('DD-MMM-YYYY')}` : ""}`} type="info" showIcon className='mb-10' />
+                    <Alert message={`${totalRecords} ${totalRecords > 0 ? 'orders' : 'order'} placed ${selectedUser ? `by ${selectedUser.firstName + " " + selectedUser.lastName}` : ""} ${date ? `on ${moment(date).format('DD-MMM-YYYY')}` : ""}`} type="info" showIcon className='mb-10' />
 
                     <Table
                         className="table-striped"

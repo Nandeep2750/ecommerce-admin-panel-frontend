@@ -1,6 +1,7 @@
 const ROOT = '/';
 
 const LOGIN_ROUTE = `/login`;
+const SIGNUP_ROUTE = `/sign-up`;
 const DASHBOARD_ROUTE = `/dashboard`;
 const PROFILE_ROUTE = '/profile';
 const CHANGE_PASSWORD_ROUTE = '/change-password';
@@ -34,6 +35,7 @@ export const LOCATIONS = Object.freeze({
     ROOT,
     DASHBOARD_ROUTE,
     LOGIN_ROUTE,
+    SIGNUP_ROUTE,
     PROFILE_ROUTE,
     CHANGE_PASSWORD_ROUTE,
     USER_ROUTE,
