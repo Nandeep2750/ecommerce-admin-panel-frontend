@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import {
-    HomeOutlined
+    HomeOutlined, UserOutlined
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -14,7 +14,12 @@ const side_menu_items_for_all = [
         key: LOCATIONS.DASHBOARD_ROUTE,
         icon: <HomeOutlined />,
         label: `Dashboard`
-    }
+    },
+    {
+        key: LOCATIONS.USER_ROUTE.ROOT,
+        icon: <UserOutlined />,
+        label: `Users`
+    },
 ]
 
 const Sidebar = (props) => {

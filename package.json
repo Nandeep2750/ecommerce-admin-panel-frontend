@@ -31,9 +31,9 @@
   },
   "scripts": {
     "start": "nodemon -w src/assets/less/antd.customize.less -w src/assets/less/theme.less --exec \"craco start\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
   },
   "eslintConfig": {
     "extends": [

@@ -9,10 +9,12 @@ import ProtectedLayout from "../layout/ProtectedLayout";
 
 /* Pages */
 const Login = lazy(() => import("../components/pages/Auth/Login"));
-
 const Dashboard = lazy(() => import("../components/pages/Dashboard/Index"));
 const Profile = lazy(() => import("../components/pages/Profile/Index"));
 const ChangePassword = lazy(() => import("../components/pages/ChangePassword/Index"));
+
+/* User */
+const User = lazy(() => import("../components/pages/User/Index"));
 
 const routes = (loggedIn) => {
 
@@ -30,6 +32,7 @@ const routes = (loggedIn) => {
       element: loggedIn ? <ProtectedLayout><Outlet /></ProtectedLayout> : <Navigate to={LOCATIONS.LOGIN_ROUTE} />,
       children: [
         { path: LOCATIONS.DASHBOARD_ROUTE, element: <Dashboard /> },
+        { path: LOCATIONS.USER_ROUTE.ROOT, element: <User /> },
         { path: LOCATIONS.CHANGE_PASSWORD_ROUTE, element: <ChangePassword /> },
         { path: LOCATIONS.PROFILE_ROUTE, element: <Profile /> },
       ],
