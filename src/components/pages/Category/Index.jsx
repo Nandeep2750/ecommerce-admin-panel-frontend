@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Card, Table, Form, Input, Space, Button, notification, Popconfirm } from 'antd';
-import { SearchOutlined, EditOutlined, DeleteOutlined} from '@ant-design/icons';
+import { Layout, Card, Table, Space, Button, notification, Popconfirm, Switch } from 'antd';
+import { EditOutlined, DeleteOutlined} from '@ant-design/icons';
 import BreadcrumbComponent from '../../common/Breadcrumb';
 import { itemRender } from '../../../helper/Paginationfunction';
 import { LOCATIONS } from '../../../config/routeConfig';
-import { OPERATIONS, PAGINATION } from '../../../config/constants';
+import { OPERATIONS, PAGINATION, TOGGLE } from '../../../config/constants';
 import api from "../../../helper/Api";
 import AddEditCategory from './AddEditCategory';
-
 
 const { Content } = Layout;
 
@@ -16,6 +15,7 @@ const Index = () => {
     const [totalRecords, setTotalRecords] = useState(0);
     const [pageSize, setPageSize] = useState(PAGINATION.DEFAULT_PAGE_SIZE);
     const [currentPage, setCurrentPage] = useState(PAGINATION.DEFAULT_PAGE_NO);
+    const [editCategoryData, setEditCategoryData] = useState(null);
     const [categories, setCategories] = useState([]);
     
     const [selectedData, setSelectedData] = useState(null);
@@ -23,7 +23,7 @@ const Index = () => {
     const [operationType, setOperationType] = useState(OPERATIONS.ADD);
 
     useEffect(() => {
-        getTaskTypeList();
+        getCategoryList();
     }, [pageSize, currentPage]);
 
     const handleShowSizeChange = (_current, size) => {
@@ -39,7 +39,7 @@ const Index = () => {
         { label: "Category" },
     ];
 
-    const getTaskTypeList = () => {
+    const getCategoryList = () => {
         setLoading(true)
         
         let params = {
@@ -69,6 +69,33 @@ const Index = () => {
         });
     };
 
+    const handleStatusChange = (checked, record) => {
+        let data = {
+            _id: record._id,
+            status: checked ? TOGGLE.ACTIVE.VALUE : TOGGLE.INACTIVE.VALUE,
+        }
+        setEditCategoryData(record)
+        api.put("/cms/category/edit", data).then(async (res) => {
+            if (res.status === 200) {
+                await getCategoryList();
+                await setEditCategoryData(null)
+                notification.success({
+                    message: res.data.message,
+                })
+            } else {
+                notification.error({
+                    message: res.data.message,
+                })
+            }
+        }).catch((err) => {
+            if (err.response && err.response.data) {
+                notification.error({
+                    message: err.response.data.message,
+                })
+            }
+        });
+    };
+
     const handleOpenAddEditModal = (type, data = null) => {
         setIsEditModalVisible(true);
         setOperationType(type)
@@ -90,7 +117,7 @@ const Index = () => {
                 notification.success({
                     message: res.data.message
                 })
-                getTaskTypeList()
+                getCategoryList()
             } else {
                 notification.error({
                     message: res.data.message
@@ -109,6 +136,20 @@ const Index = () => {
         {
             title: "Category",
             dataIndex: "categoryName",
+        },
+        {
+            title: "Status",
+            dataIndex: "status",
+            render: (text, record) => {
+                return <Switch
+                    onChange={(checked) => handleStatusChange(checked, record)}
+                    checkedChildren={TOGGLE.ACTIVE.LABLE}
+                    checked={text === TOGGLE.ACTIVE.VALUE}
+                    unCheckedChildren={TOGGLE.INACTIVE.LABLE}
+                    loading={editCategoryData?._id === record._id}
+                    style={{ width: 80 }}
+                />
+            }
         },
         {
             title: "Actions",
@@ -171,7 +212,7 @@ const Index = () => {
                         isEditModalVisible={isEditModalVisible}
                         handleCloseAddEditModal={handleCloseAddEditModal}
                         operationType={operationType} 
-                        getTaskTypeList={getTaskTypeList}
+                        getCategoryList={getCategoryList}
                     />
 
                 </Card>

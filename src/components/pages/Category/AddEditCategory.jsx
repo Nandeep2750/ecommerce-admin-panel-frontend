@@ -10,7 +10,7 @@ import api from "../../../helper/Api";
 const { Content } = Layout;
 
 const AddEditCategory = (props) => {
-    const { selectedData, isEditModalVisible, handleCloseAddEditModal, operationType, getTaskTypeList } = props
+    const { selectedData, isEditModalVisible, handleCloseAddEditModal, operationType, getCategoryList } = props
     const isAddOperation = operationType === OPERATIONS.ADD
     const isEditOperation = operationType === OPERATIONS.EDIT
 
@@ -22,7 +22,7 @@ const AddEditCategory = (props) => {
     }, [selectedData]);
 
 
-    const TaskTypeValidationSchema = Yup.object().shape({
+    const categoryValidationSchema = Yup.object().shape({
         _id: Yup.string().when("categoryName", {
             is: () => !isAddOperation,
             then: Yup.string().required()
@@ -35,7 +35,7 @@ const AddEditCategory = (props) => {
             _id: isEditOperation ? selectedData?._id : "",
             categoryName: isEditOperation ? selectedData?.categoryName : ""
         },
-        validationSchema: TaskTypeValidationSchema,
+        validationSchema: categoryValidationSchema,
         onSubmit: (values, actions) => {
 
             let fields = {};
@@ -56,7 +56,7 @@ const AddEditCategory = (props) => {
                     notification.success({
                         message: res.data.message
                     })
-                    getTaskTypeList()
+                    getCategoryList()
                     closeModal()
                 } else {
                     notification.error({
