@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Card, Table, notification, Select, Row, Col, Form, DatePicker } from 'antd';
+import { Layout, Card, Table, notification, Select, Row, Col, Form, DatePicker, Alert } from 'antd';
 import BreadcrumbComponent from '../../common/Breadcrumb';
 import { itemRender } from '../../../helper/Paginationfunction';
 import { LOCATIONS } from '../../../config/routeConfig';
 import { CURRENCY, PAGINATION } from '../../../config/constants';
 import api from "../../../helper/Api";
+import moment from 'moment';
 
 const { Content } = Layout;
 
@@ -13,7 +14,8 @@ const Index = (props) => {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
-    const [userId, setUserId] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [date, setDate] = useState(null);
     const [pageSize, setPageSize] = useState(PAGINATION.DEFAULT_PAGE_SIZE);
     const [currentPage, setCurrentPage] = useState(PAGINATION.DEFAULT_PAGE_NO);
     const [orders, setOrders] = useState([]);
@@ -24,8 +26,7 @@ const Index = (props) => {
 
     useEffect(() => {
         getOrderList();
-        getAllUserList();
-    }, [pageSize, currentPage, userId]);
+    }, [pageSize, currentPage, selectedUser, date]);
 
     const handleShowSizeChange = (_current, size) => {
         setPageSize(size);
@@ -44,7 +45,8 @@ const Index = (props) => {
         let params = {
             page: currentPage,
             limit: pageSize,
-            userId: userId
+            userId: selectedUser?._id,
+            date: date
         };
 
         api.post("/cms/order/list", params).then((res) => {
@@ -93,10 +95,10 @@ const Index = (props) => {
     };
 
     const tableColumns = [
-        {
-            title: "Order Id",
-            dataIndex: "_id",
-        },
+        // {
+        //     title: "Order Id",
+        //     dataIndex: "_id",
+        // },
         {
             title: "User",
             dataIndex: "userId",
@@ -110,7 +112,7 @@ const Index = (props) => {
             render: (data, record) => {
                 return (
                     <>
-                        {data.map((item,index) => (
+                        {data.map((item, index) => (
                             <p key={index}>{item?.productId?.productName} <b> ({CURRENCY} {item?.price}) x {item?.quantity} </b> </p>
                         ))}
                     </>
@@ -148,11 +150,11 @@ const Index = (props) => {
                                         placeholder="Select a person"
                                         optionFilterProp="children"
                                         allowClear
-                                        onChange={(value)=> { 
+                                        onChange={(value) => {
                                             if (value) {
-                                                setUserId(value)
-                                            }else{
-                                                setUserId(null)
+                                                setSelectedUser(users.find(user => user._id === value))
+                                            } else {
+                                                setSelectedUser(null)
                                             }
                                         }}
                                         filterOption={(input, option) =>
@@ -169,11 +171,16 @@ const Index = (props) => {
                             </Col>
                             <Col span={12} >
                                 <Form.Item label="Date" name="date">
-                                    {/* <DatePicker  /> */}
+                                    <DatePicker
+                                        onChange={(date, dateString) => {
+                                            setDate(dateString)
+                                        }}
+                                    />
                                 </Form.Item>
                             </Col>
                         </Row>
                     </Form>
+                    <Alert message={`Total ${totalRecords} ${totalRecords > 0 ? 'orders' : 'order'} placed ${selectedUser ? `by ${selectedUser.firstName + " " + selectedUser.lastName}` : ""} ${date ? `on ${moment(date).format('DD-MMM-YYYY')}` : ""}`} type="info" showIcon className='mb-10' />
 
                     <Table
                         className="table-striped"

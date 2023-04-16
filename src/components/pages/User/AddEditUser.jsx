@@ -5,7 +5,7 @@ import { Content } from 'antd/lib/layout/layout';
 import { Card, notification } from "antd";
 import { FormikProvider, useFormik } from "formik";
 import * as Yup from "yup";
-import { Form, Input, SubmitButton, Radio, Switch } from "formik-antd";
+import { Form, Input, SubmitButton, Radio } from "formik-antd";
 
 import BreadcrumbComponent from '../../common/Breadcrumb';
 import { useNavigate, useParams } from 'react-router';
