@@ -74,7 +74,7 @@ const Index = (props) => {
             title: "User",
             dataIndex: "userId",
             render: (data, record) => {
-                return data.firstName + " " + data.lastName
+                return data?.firstName + " " + data?.lastName
             }
         },
         {
@@ -84,7 +84,7 @@ const Index = (props) => {
                 return (
                     <>
                         {data.map((item) => (
-                            <p>{item.productId.productName} <b> ({CURRENCY} {item.price}) x {item.quantity} </b> </p>
+                            <p>{item?.productId?.productName} <b> ({CURRENCY} {item?.price}) x {item?.quantity} </b> </p>
                         ))}
                     </>
                 )
