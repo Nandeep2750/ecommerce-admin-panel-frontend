@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import {
-    HomeOutlined, UserOutlined
+    HomeOutlined, UserOutlined, ApartmentOutlined
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -19,6 +19,11 @@ const side_menu_items_for_all = [
         key: LOCATIONS.USER_ROUTE.ROOT,
         icon: <UserOutlined />,
         label: `Users`
+    },
+    {
+        key: LOCATIONS.CATEGORY_ROUTE.ROOT,
+        icon: <ApartmentOutlined />,
+        label: `Categories`,
     },
 ]
 

@@ -11,6 +11,10 @@ const USER_ROUTE = {
     EDIT:'/user/edit/:userId',
 }
 
+const CATEGORY_ROUTE = {
+    ROOT:'/category',
+}
+
 const PRODUCT_ROUTE = {
     ROOT:'/product',
     ADD:'/product/add',
@@ -29,6 +33,7 @@ export const LOCATIONS = Object.freeze({
     PROFILE_ROUTE,
     CHANGE_PASSWORD_ROUTE,
     USER_ROUTE,
+    CATEGORY_ROUTE,
     PRODUCT_ROUTE,
     ERROR_ROUTE
 });

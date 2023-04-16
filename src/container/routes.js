@@ -18,6 +18,9 @@ const ChangePassword = lazy(() => import("../components/pages/ChangePassword/Ind
 const User = lazy(() => import("../components/pages/User/Index"));
 const AddEditUser = lazy(() => import("../components/pages/User/AddEditUser"));
 
+/* Product Module */
+const Category = lazy(() => import("../components/pages/Category/Index"));
+
 const routes = (loggedIn) => {
 
   return [
@@ -43,6 +46,7 @@ const routes = (loggedIn) => {
             { path: LOCATIONS.USER_ROUTE.EDIT, element: <AddEditUser operationType={OPERATIONS.EDIT} /> },
           ]
         },
+        { path: LOCATIONS.CATEGORY_ROUTE.ROOT, element: <Category /> },
         { path: LOCATIONS.CHANGE_PASSWORD_ROUTE, element: <ChangePassword /> },
         { path: LOCATIONS.PROFILE_ROUTE, element: <Profile /> },
       ],
