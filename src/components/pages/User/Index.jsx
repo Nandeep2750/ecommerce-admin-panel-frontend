@@ -21,7 +21,7 @@ const Index = (props) => {
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        getStaticPageList();
+        getUserList();
     }, [pageSize, currentPage, search]);
 
     const handleShowSizeChange = (_current, size) => {
@@ -42,7 +42,7 @@ const Index = (props) => {
         { label: "Users" },
     ];
 
-    const getStaticPageList = () => {
+    const getUserList = () => {
         let params = {
             page: currentPage,
             limit: pageSize,
@@ -80,7 +80,7 @@ const Index = (props) => {
         setEditUserData(record)
         api.post("/cms/user/active-inactive", data).then(async (res) => {
             if (res.status === 200) {
-                await getStaticPageList();
+                await getUserList();
                 await setEditUserData(null)
                 notification.success({
                     message: res.data.message,

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Card, Table, Form, Input, Space, Button, notification } from 'antd';
-import { SearchOutlined, EditOutlined, EyeOutlined } from '@ant-design/icons';
+import { Layout, Card, Table, Form, Input, Space, Button, notification, Popconfirm } from 'antd';
+import { SearchOutlined, EditOutlined, EyeOutlined, DeleteOutlined } from '@ant-design/icons';
 import BreadcrumbComponent from '../../common/Breadcrumb';
 import { itemRender } from '../../../helper/Paginationfunction';
 import { LOCATIONS } from '../../../config/routeConfig';
 import { CURRENCY, PAGINATION } from '../../../config/constants';
 import { Link, useNavigate } from 'react-router-dom';
 import api from "../../../helper/Api";
+import { getPlaceholderImage } from '../../../helper/GeneralHelper';
 
 
 const { Content } = Layout;
@@ -22,7 +23,7 @@ const Index = (props) => {
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        getStaticPageList();
+        getProductList();
     }, [pageSize, currentPage, search]);
 
     const handleShowSizeChange = (_current, size) => {
@@ -43,7 +44,7 @@ const Index = (props) => {
         { label: "Products" },
     ];
 
-    const getStaticPageList = () => {
+    const getProductList = () => {
         let params = {
             page: currentPage,
             limit: pageSize,
@@ -73,6 +74,27 @@ const Index = (props) => {
             });
     };
 
+    const handleDelete = (id) => {
+        api.delete(`/cms/product/delete?_id=${id}`).then((res) => {
+            if (res.status === 200) {
+                notification.success({
+                    message: res.data.message
+                })
+                getProductList()
+            } else {
+                notification.error({
+                    message: res.data.message
+                })
+            }
+          }).catch((err) => {
+            if (err.response && err.response.data) {
+                notification.error({
+                    message: err.response.data.message,
+                });
+            }
+        });
+    };
+
     const tableColumns = [
         {
             title: "Name",
@@ -89,7 +111,7 @@ const Index = (props) => {
             title: "Image",
             dataIndex: "productImageUrl",
             render: (text, record) => {
-                return (<img src={text} alt={record.productName} height={100} />)
+                return (<img src={text} onError={(e) => e.target.src = getPlaceholderImage(80,100,"Product")} alt={record.productName} height={100} />)
             }
         },
         {
@@ -109,6 +131,15 @@ const Index = (props) => {
                     <Space size={10}>
                         {/* <Button type="link" shape="circle" icon={<EyeOutlined />} loading={false} onClick={() => navigate(viewUrl)} /> */}
                         <Button type="link" shape="circle" icon={<EditOutlined />} loading={false} onClick={() => navigate(editUrl)} />
+                        <Popconfirm
+                            placement="bottomRight"
+                            title="Are you sure want to delete this product?"
+                            onConfirm={()=> handleDelete(record._id)}
+                            okText="Yes"
+                            cancelText="No"
+                        >
+                            <Button type="link" shape="circle" icon={<DeleteOutlined />} loading={false}  />
+                        </Popconfirm>
                     </Space>
                 )
 

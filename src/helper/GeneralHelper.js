@@ -7,5 +7,8 @@ export function generateRandomFileName(prefix) {
     } else {
         return 'CMS_' + timestamp;
     }
+}
 
+export function getPlaceholderImage(width = 100, height= 100,text="placeholderimage") {
+    return `https://placehold.jp/${width}x${height}.png?text=${text}`
 }
